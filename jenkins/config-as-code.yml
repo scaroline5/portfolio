@@ -9,18 +9,14 @@ jenkins:
       allowsSignup: false
       users:
        - id: ${JENKINS_ADMIN_ID}
-         password: ${JENKINS_ADMIN_PASSWORD}
-
-#The globalMatrix property sets global permissions
-authorizationStrategy:
-    globalMatrix:
-      permissions:
-        - "Overall/Administer:admin"
-        - "Overall/Read:authenticated"
-
-#Enables Agent to Controller Access Control
-remotingSecurity:
-    enabled: true        
+         password: ${JENKINS_ADMIN_PASSWORD}  
+  authorizationStrategy:
+      globalMatrix:
+        permissions:
+          - "Overall/Administer:admin"
+          - "Overall/Read:authenticated"  
+  remotingSecurity:
+      enabled: true                 
 
 #Set new building authorization strategy with Plugin authorize-project 
 #This will trigger pipelines with the user who requested the build
@@ -28,7 +24,7 @@ security:
   queueItemAuthenticator:
     authenticators:
     - global:
-        strategy: triggeringUsersAuthorizationStrategy        
+        strategy: triggeringUsersAuthorizationStrategy 
 
 #Set the jenkins URL         
 unclassified:
